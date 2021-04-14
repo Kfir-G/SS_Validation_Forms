@@ -1,0 +1,131 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>DB Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="../Scripts/ajaxCalls.js"></script>
+
+    <style type="text/css">
+
+        .red-star {
+            color: red;
+        }
+
+    </style>
+
+
+    <script>
+
+        $(document).ready(function () {
+            $("#dyn").click(dynStaff);
+            $("#pForm").submit(f1); // bind the submit event to a function called f1
+
+            // activate a custom validation function when the element looses focus.
+            $("#discountCodeTB").on("blur", checkCode);  
+        });
+
+        function checkCode() {
+            if (this.value % 3 != 0) { // an example of validation that the code divides by 3
+                this.validity.valid = false; // must set it to false to prevent the submit to the server
+                this.setCustomValidity('Code is not valid, please enter a valid code');
+            }
+            else {
+                this.validity.valid = true;
+                this.setCustomValidity('');
+            }
+        }
+
+        function AddCar() {
+            // createa a JSON object called Car
+            Car = { // Note that the name of the fields must be identical to the names of the properties of the object in the server
+                Model: $("#modelTB").val(),
+                Manufacturer: $("#manufacturerTB").val(),
+                Price: parseFloat($("#priceTB").val()),
+                Year: parseInt($("#yearDDL").val())
+            }
+            //ajaxCall("POST", "../api/cars", JSON.stringify(Car), success, error);
+            swal("Submitted to the server!", "Great Job", "success");
+
+        }
+
+        // This function is called in case of a success
+        function success(data) {
+            swal("Added Successfuly!", "Great Job", "success");
+        }
+
+        // This function is called in case of an error
+        function error(err) {
+            alert("error");
+        }
+
+        function f1() {
+            AddCar();
+            
+            return false; // the return false will prevent the form from being submitted
+            // hence the page will not reload
+        }
+
+        function dynStaff() {
+            $("#ph").html("<h3>Dynamic</h3>");
+        }
+
+    </script>
+
+</head>
+<body>
+
+    <div class="container">
+        <form id="pForm">
+            <h2>Insert A new Car</h2>
+            <div class="form-group">
+                <label for="modelTB"><span class="red-star">★ </span>Model</label>
+                <input type="text" class="form-control" id="modelTB" placeholder="Enter the model name" required>
+            </div>
+            <div class="form-group">
+                <label for="manufacturerTB"><span class="red-star">★ </span>Manufacturer</label>
+                <input type="text" class="form-control" id="manufacturerTB" placeholder="Enter the manufacturer name" required>
+            </div>
+            <div class="form-group">
+                <label for="priceTB"><span class="red-star">★ </span>Price</label>
+                <input type="number" class="form-control" id="priceTB" placeholder="Enter the price" min="40000" max="100000" required />
+            </div>
+            <div class="form-group">
+                <label for="yearDDL"><span class="red-star">★ </span>Year</label>
+                <select id="yearDDL" required>
+                    <!--required will not accept "" value-->
+                    <option value="">Choose Year</option>
+                    <option value="2019">2019</option>
+                    <option value="2018">2018</option>
+                    <option value="2017">2017</option>
+                    <option value="2016">2016</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="discountCodeTB">Discount Code (using a custom validator)</label>
+                <input type="text" class="form-control" id="discountCodeTB" placeholder="Enter the discount code"/>
+            </div>
+            
+            <div class="form-group">
+                <label for="dealerPhone">Dealer Phone (using a pattern validator)</label>
+                <input type="tel"  class="form-control" placeholder="Enter the dealer phone ddd-ddd-dddd" id="dealerPhone" 
+                       pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                       oninvalid="this.setCustomValidity('Format should be ddd-ddd-dddd')"
+                       oninput="this.setCustomValidity('')"
+                       />
+            </div>
+
+            <input type="submit" value="Submit BTN" />
+            <input type="button" value="Dynamic Part" id="dyn" />
+        </form>
+    </div>
+    <div id="ph"> </div>
+
+
+</body>
+</html>
