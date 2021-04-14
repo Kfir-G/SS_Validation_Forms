@@ -1,9 +1,12 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>DB Example</title>
+
+    <title>Home Page</title>
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -11,16 +14,12 @@
     <script src="../Scripts/ajaxCalls.js"></script>
 
     <style type="text/css">
-
         .red-star {
             color: red;
         }
-
     </style>
 
-
     <script>
-
         $(document).ready(function () {
             $("#dyn").click(dynStaff);
             $("#pForm").submit(f1); // bind the submit event to a function called f1
@@ -73,12 +72,10 @@
         function dynStaff() {
             $("#ph").html("<h3>Dynamic</h3>");
         }
-
     </script>
 
 </head>
 <body>
-
     <div class="container">
         <form id="pForm">
             <h2>Insert A new Car</h2>
@@ -124,8 +121,8 @@
             <input type="button" value="Dynamic Part" id="dyn" />
         </form>
     </div>
-    <div id="ph"> </div>
-
-
+    <div id="ph"> 
+        
+    </div>
 </body>
 </html>
