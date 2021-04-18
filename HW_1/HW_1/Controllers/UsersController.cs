@@ -5,6 +5,8 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using HW_1.Models;
+using HW_1.Models.DAL;
+
 
 namespace HW_1.Controllers
 {
@@ -16,10 +18,12 @@ namespace HW_1.Controllers
             return new string[] { "value1", "value2" };
         }
 
-        // GET api/<controller>/5
-        public string Get(int id)
+        // GET api/<controller>/mail/password
+        public int Get(string mail, string password)
         {
-            return "value";
+            DataServices ds = new DataServices();
+            return ds.validLogin( mail, password);
+             
         }
 
         // POST api/<controller>

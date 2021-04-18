@@ -9,6 +9,23 @@ namespace HW_1.Models.DAL
     {
         static List<Episode> episodeList;
         static List<User> userList;
+
+        public int validLogin(string mail, string password)
+        {
+            if(userList == null)
+            {
+                return 0;
+            }
+
+            foreach (User user in userList)
+            {
+                if(mail == user.Email && password == user.Password)
+                {
+                    return 1;
+                }
+            }
+            return 0;
+        }
         public int InsertUserDS(User user)
         {
             Console.WriteLine("InsertUser - dataservise.cs step 3");
