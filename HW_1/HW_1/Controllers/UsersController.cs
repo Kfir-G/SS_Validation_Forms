@@ -23,9 +23,10 @@ namespace HW_1.Controllers
         }
 
         // POST api/<controller>
-        public void Post([FromBody] User user)
+        public int Post([FromBody] User user)
         {
             user.InsertUser();
+            return 1;
         }
 
         // PUT api/<controller>/5

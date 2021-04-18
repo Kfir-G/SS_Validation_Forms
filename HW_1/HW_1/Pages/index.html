@@ -40,28 +40,33 @@
             return false;
         }
         function postUser() {
+
             let usrname = $("#usrname").val();
             let userlastname = $("#userlastname").val();
             let useremail = $("#useremail").val();
             let psw = $("#psw").val();
             let userphonenum = $("#userphonenum").val();
+            let genderDDL = $("#genderDDL").val();
             let useryear = $("#useryear").val();
             let genreDDL = $("#genreDDL").val();
             let useraddress = $("#useraddress").val();
+            /*if (genreDDL == -1) genreDDL = "null"*/
 
+           
             let userObj = {
                 Name: usrname,
                 LastName: userlastname,
                 Email: useremail,
                 Password: psw,
                 Cellphone: userphonenum,
-                Gender: gender,
+                Gender: genderDDL,
                 YearBirth: useryear,
-                Genre: genre,
-                Address: address
+                Genre: genreDDL,
+                Address: useraddress
             }
-    
-            let api = "../api/User";
+
+            console.log(userObj)
+            let api = "../api/Users";
             ajaxCall("POST", api, JSON.stringify(userObj), postUserSuccessCB, postUserErrorCB)
         }
 
