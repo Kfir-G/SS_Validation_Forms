@@ -9,7 +9,15 @@ namespace HW_1.Models.DAL
     {
         static List<Episode> episodeList;
         static List<User> userList;
+        public int InsertUser(User user)
+        {
+            if (userList == null)
+                userList = new List<User>();
 
+            userList.Add(user);
+
+            return 1;
+        }
         public int Insert(Episode episode)
         {
             if (episodeList == null)

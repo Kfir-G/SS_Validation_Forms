@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using HW_1.Models.DAL;
 
 namespace HW_1.Models
 {
@@ -45,5 +46,15 @@ namespace HW_1.Models
         public int YearBirth { get => yearBirth; set => yearBirth = value; }
         public string Genre { get => genre; set => genre = value; }
         public string Address { get => address; set => address = value; }
+
+
+
+        public int InsertUser()
+        {
+            DataServices ds = new DataServices();
+            ds.InsertUser(this);
+            return 1;
+        }
+
     }
 }
