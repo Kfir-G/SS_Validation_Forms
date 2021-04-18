@@ -25,11 +25,15 @@
     <script>
 
         // https://api.themoviedb.org/3/search/tv?api_key=1e5a5ee20af326aebb685a34a1868b76&language=en-US&page=1&include_adult=false&query=Grey%27s%20Anatomy
+        $('#fromUser').submit(function (e) {
+            e.preventDefault();
+            postUser()
+        });
 
         $(document).ready(function () {
             $("#getTV").click(getTV);
             
-
+            
             // replace it with your own key -DONE
             key = "1e5a5ee20af326aebb685a34a1868b76";
 
@@ -40,8 +44,12 @@
 
         });
 
-        function postUser(fromObj) {
-            alert(JSON.stringify(formObj));
+
+
+
+        function postUser(event) {  
+            console.log("postuser");
+            console.log($("#name").val())
             //let userObj = {
             //    Name: fromObj.name;
             //    LastName:;
@@ -57,6 +65,7 @@
             //let api = "../api/Episodes";
             //ajaxCall("POST", api, JSON.stringify(episodeObj), postEpisodSuccessCB, postEpisodErrorCB)
             ///*console.log(epi.episodes[i]);*/
+            return false
         }
 
         function getTV() {
@@ -210,7 +219,7 @@
                          class="w3-circle w3-margin-top" />
                 </div>
 
-                <form id="formUser" class="w3-container" action="/action_page.php"><!--FORM-->
+                <form id="formUser" class="w3-container"><!--FORM-->
                     <div class="w3-section">
                         <label><b>Username</b></label>
                         <input class="w3-input w3-border w3-margin-bottom"
@@ -259,7 +268,7 @@
                                name="useryear"
                                required />
                         <label for="genreDDL"><b>Favorite Genre</b></label>
-                        <select id="genreDDL" required>
+                        <select id="genreDDL">
                             <!--required will not accept "" value-->
                             <option value="">choose</option>
                             <option value="comedy">Comedy</option>
@@ -273,9 +282,9 @@
                                placeholder="Enter Address"
                                name="useraddress"
                                required />
-                        <button class="w3-button w3-block w3-green w3-section w3-padding"
-                                type="submit" onclick="postUser(document.getElementById('formUser'))">
-                            Login
+                        <button id="register-btn"class="w3-button w3-block w3-green w3-section w3-padding"
+                                type="submit">
+                            Register
                         </button>
                     </div>
                 </form>
