@@ -25,6 +25,7 @@ namespace HW_1.Controllers
         // POST api/<controller>
         public int Post([FromBody] User user)
         {
+            Console.WriteLine("POST api/<controller> step 1");
             user.InsertUser();
             return 1;
         }

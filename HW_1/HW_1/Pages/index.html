@@ -26,6 +26,7 @@
 
         $(document).ready(function () {
             $("#getTV").click(getTV);
+            $("#formUser").submit(postUser);
 
             // replace it with your own key -DONE
             key = "1e5a5ee20af326aebb685a34a1868b76";
@@ -33,13 +34,10 @@
             url = "https://api.themoviedb.org/";
             imagePath = "https://image.tmdb.org/t/p/w500";
 
-            //https://api.themoviedb.org/3/tv/1416/season/0/episode/64467?api_key=1e5a5ee20af326aebb685a34a1868b76&language=en-US
         });
-        function f1() {
-            $("#formUser").submit(postUser());
-            return false;
-        }
+
         function postUser() {
+            document.getElementById('id01').style.display = 'none'
 
             let usrname = $("#usrname").val();
             let userlastname = $("#userlastname").val();
@@ -62,12 +60,13 @@
                 Gender: genderDDL,
                 YearBirth: useryear,
                 Genre: genreDDL,
-                Address: useraddress
-            }
+                Address: useraddress,
+            };
 
             console.log(userObj)
             let api = "../api/Users";
             ajaxCall("POST", api, JSON.stringify(userObj), postUserSuccessCB, postUserErrorCB)
+            return false;
         }
 
         function postUserErrorCB() {
@@ -312,11 +311,9 @@
                                placeholder="Enter Address"
                                id="useraddress"
                                required />
-                        <button class="w3-button w3-block w3-green w3-section w3-padding"
-                                type="submit"
-                                onclick="f1()">
-                            Submit
-                        </button>
+                        <input class="w3-button w3-block w3-green w3-section w3-padding"
+                               type="submit"
+                               placeholder="Submit"/> 
                     </div>
                 </form>
 
@@ -325,7 +322,7 @@
                 </div>
             </div>
         </div>
-
+    </div>
         <div id="ph"></div>
         <div id="seasonredner"></div>
 

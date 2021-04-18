@@ -51,8 +51,10 @@ namespace HW_1.Models
 
         public int InsertUser()
         {
+            Console.WriteLine("InsertUser - user.cs step 2");
+
             DataServices ds = new DataServices();
-            ds.InsertUser(this);
+            ds.InsertUserDS(this);
             return 1;
         }
 

@@ -9,8 +9,10 @@ namespace HW_1.Models.DAL
     {
         static List<Episode> episodeList;
         static List<User> userList;
-        public int InsertUser(User user)
+        public int InsertUserDS(User user)
         {
+            Console.WriteLine("InsertUser - dataservise.cs step 3");
+
             if (userList == null)
                 userList = new List<User>();
 
