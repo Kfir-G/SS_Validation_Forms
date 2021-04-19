@@ -67,7 +67,7 @@
           "<h6>Welcome " + user.Name + " " + user.LastName + "</h6>"
         );
       }
-
+        //../api/Users?mail=&password=..
       function loginUser() {
         document.getElementById("id02").style.display = "none";
         let userlogin = $("#userlogin").val();
@@ -83,8 +83,9 @@
       function loginUserErrorCB() {
         alert("error");
       }
-
-      function loginUserSuccessCB(user) {
+        //
+        function loginUserSuccessCB(user) {
+            console.log(user)
         if (user != null) {
           userLoginToSystme(user);
         } else if (user == null) {

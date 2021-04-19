@@ -19,19 +19,17 @@ namespace HW_1.Controllers
         }
 
         // GET api/<controller>/mail/password
-        public User Get(string mail, string password)
+        public HttpResponseMessage Get(string mail, string password)
         {
             DataServices ds = new DataServices();
             User user = ds.validLogin( mail, password);
             if(user != null)
             {
-                return user;
+                return Request.CreateResponse(HttpStatusCode.OK, user);
             }
-            else
-            {
-                return null;
-
-            }
+            
+            return Request.CreateResponse(HttpStatusCode.NotFound, "Email address or Password is incorrect");
+            
         }
 
         // POST api/<controller>
