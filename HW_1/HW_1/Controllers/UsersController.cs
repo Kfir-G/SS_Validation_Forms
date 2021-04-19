@@ -19,11 +19,19 @@ namespace HW_1.Controllers
         }
 
         // GET api/<controller>/mail/password
-        public int Get(string mail, string password)
+        public User Get(string mail, string password)
         {
             DataServices ds = new DataServices();
-            return ds.validLogin( mail, password);
-             
+            User user = ds.validLogin( mail, password);
+            if(user != null)
+            {
+                return user;
+            }
+            else
+            {
+                return null;
+
+            }
         }
 
         // POST api/<controller>

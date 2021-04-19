@@ -10,21 +10,21 @@ namespace HW_1.Models.DAL
         static List<Episode> episodeList;
         static List<User> userList;
 
-        public int validLogin(string mail, string password)
+        public User validLogin(string mail, string password)
         {
             if(userList == null)
             {
-                return 0;
+                return null;
             }
 
             foreach (User user in userList)
             {
                 if(mail == user.Email && password == user.Password)
                 {
-                    return 1;
+                    return user;
                 }
             }
-            return 0;
+            return null;
         }
         public int InsertUserDS(User user)
         {
