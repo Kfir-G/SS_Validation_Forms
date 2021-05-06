@@ -10,8 +10,13 @@
       #ph > img {
         height: 300px;
       }
+      #seasonredner,
+      #ph {
+        margin-left: 20px;
+      }
       .container-fluid {
-        padding-top: 20px;
+        margin-top: 20px;
+        margin-left: 20px;
       }
     </style>
 
@@ -35,6 +40,7 @@
         $("#getTV").click(getTV);
         $("#formUser").submit(postUser);
         $("#loginform").submit(loginUser);
+
         user = localStorage.getItem("user-login");
         if (user != null) {
           enterUser(user);
@@ -42,8 +48,7 @@
 
         // replace it with your own key -DONE
         key = "1e5a5ee20af326aebb685a34a1868b76";
-        img_tmdb =
-          "https://www.themoviedb.org/assets/2/v4/logos/v2/blue_square_2-d537fb228cf3ded904ef09b136fe3fec72548ebc1fea3fbbd1ad9e36364db38b.svg";
+        img_tmdb = "../Images/img_tmdb.png";
         url = "https://api.themoviedb.org/";
         imagePath = "https://image.tmdb.org/t/p/w500";
       });
@@ -59,15 +64,15 @@
         );
       }
 
-        function enterUser(user) {
-        user=JSON.parse(user);
+      function enterUser(user) {
+        user = JSON.parse(user);
         $("#register-btn").hide();
         $("#login-btn").hide();
         $("#welcome-user").html(
           "<h6>Welcome " + user.Name + " " + user.LastName + "</h6>"
         );
       }
-        //../api/Users?mail=&password=..
+      //../api/Users?mail=&password=..
       function loginUser() {
         document.getElementById("id02").style.display = "none";
         let userlogin = $("#userlogin").val();
@@ -83,9 +88,9 @@
       function loginUserErrorCB() {
         alert("error");
       }
-        //
-        function loginUserSuccessCB(user) {
-            console.log(user)
+      //
+      function loginUserSuccessCB(user) {
+        console.log(user);
         if (user != null) {
           userLoginToSystme(user);
         } else if (user == null) {
@@ -286,13 +291,16 @@
       <div class="row">
         <div class="col">
           <div class="input-group mb-3">
-            <div class="input-group-prepend"></div>
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon1">Search</span>
+            </div>
             <input
+              id="tvShowName"
               type="text"
               class="form-control"
-              aria-label="Default"
-              aria-describedby="inputGroup-sizing-default"
-              id="tvShowName"
+              placeholder="TV Show"
+              aria-label="Username"
+              aria-describedby="basic-addon1"
             />
           </div>
         </div>
@@ -333,10 +341,10 @@
                   >
                   <!--NULL-->
                   <img
-                    src="img_tmdb"
+                    src="../Images/img_tmdb.png"
                     alt="Avatar"
                     style="width: 30%"
-                    class="w3-circle w3-margin-top"
+                    class="w3-margin-top"
                   />
                 </div>
 
@@ -432,7 +440,7 @@
                   <button
                     onclick="document.getElementById('id01').style.display='none'"
                     type="button"
-                    class="w3-button w3-red"
+                    class="w3-button w3-blue"
                   >
                     Cancel
                   </button>
@@ -465,10 +473,10 @@
                     >&times;</span
                   >
                   <img
-                    src="img_tmdb"
+                    src="../Images/img_tmdb.png"
                     alt="Avatar"
                     style="width: 30%"
-                    class="w3-circle w3-margin-top"
+                    class="w3-margin-top"
                   />
                 </div>
 
@@ -491,7 +499,7 @@
                       required
                     />
                     <input
-                      class="w3-button w3-block w3-green w3-section w3-padding"
+                      class="w3-button w3-block w3-light-green w3-section w3-padding"
                       type="submit"
                     />
                   </div>
@@ -503,7 +511,7 @@
                   <button
                     onclick="document.getElementById('id02').style.display='none'"
                     type="button"
-                    class="w3-button w3-red"
+                    class="w3-button w3-blue"
                   >
                     Cancel
                   </button>
